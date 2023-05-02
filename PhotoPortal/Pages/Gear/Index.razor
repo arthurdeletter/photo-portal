@@ -1,0 +1,17 @@
+﻿@page "/gear"
+
+<PageTitle>Gear</PageTitle>
+
+<h3>Gear</h3>
+
+@if (content is null)
+{
+    <p>Loading</p>
+}
+else
+{
+    @foreach (var item in content)
+    {
+        <GearCard Id="@item.Id" DisplayName="@item.Properties["displayName"].ToString()" Description="@item.Properties["description"].ToString()" Owners="@item.Properties["ownershipCounter"].ToString()" DisplayImage="@item.Properties["displayImage"].ToString()" />
+    }
+}

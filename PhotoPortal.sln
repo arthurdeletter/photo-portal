@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoPortal", "PhotoPortal\PhotoPortal.csproj", "{A29E21D8-5DEF-4EFB-81A8-285901EFB23C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A29E21D8-5DEF-4EFB-81A8-285901EFB23C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29E21D8-5DEF-4EFB-81A8-285901EFB23C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29E21D8-5DEF-4EFB-81A8-285901EFB23C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29E21D8-5DEF-4EFB-81A8-285901EFB23C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B02065DC-3C8A-40D1-852C-B0A10EC8C816}
+	EndGlobalSection
+EndGlobal
