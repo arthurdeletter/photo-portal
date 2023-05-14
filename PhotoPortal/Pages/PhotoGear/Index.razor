@@ -1,0 +1,15 @@
+﻿@page "/gear"
+
+<PageTitle>Gear</PageTitle>
+
+@if (GearPage is null)
+{
+    <div style="display: flex; justify-content: center; padding-block: 2rem;">
+        <MudProgressCircular Size="Size.Medium" Color="Color.Primary" Indeterminate="true" />
+    </div>
+}
+else
+{
+    <StandardBanner Headline="@GearPage.Heading" SubHeadline="@GearPage.SubHeading" BannerImage="@GearPage.Banner" />
+    <GearShowcase SectionTitle="@GearPage.AvailableGearTitle" Items="@GearPage.AvailableGear" />
+}

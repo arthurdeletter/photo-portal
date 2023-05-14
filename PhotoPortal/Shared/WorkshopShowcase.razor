@@ -1,0 +1,27 @@
+﻿
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="display-6 mb-4">@SectionTitle</h2>
+
+        <div class="showcase-grid">
+            @if (Workshops?.Count > 0)
+            {
+                @foreach (var workshop in Workshops)
+                {
+                    <MudCard>
+                        <MudCardMedia Image="@workshop.WorkshopBanner.Src" Height="200" Style="background-size: cover;" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.h5">@workshop.WorkshopTitle</MudText>
+                            <MudText Typo="Typo.body2">@workshop.Excerpt</MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@workshop.Url">More</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                }
+            }
+        </div>
+    </div>
+</section>
+

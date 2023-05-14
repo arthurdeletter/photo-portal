@@ -12,16 +12,21 @@
     <None Remove="Heartcore\" />
     <None Remove="Pages\Home\" />
     <None Remove="Data\" />
-    <None Remove="Pages\Gear\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Umbraco\" />
+    <None Remove="Pages\PhotographyWorkshops\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Heartcore\" />
     <Folder Include="Pages\Home\" />
     <Folder Include="Data\" />
-    <Folder Include="Pages\Gear\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Umbraco\" />
+    <Folder Include="Pages\PhotographyWorkshops\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Umbraco.Headless.Client.Net" Version="1.4.1" />
     <PackageReference Include="MudBlazor" Version="6.2.2" />
+    <PackageReference Include="Umbraco.Headless.Client.Net.Web" Version="1.4.1" />
   </ItemGroup>
 </Project>

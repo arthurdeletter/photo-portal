@@ -1,0 +1,30 @@
+﻿@page "/workshops/{Route}"
+
+@if (WorkshopPage is null)
+{
+    <div class="d-flex justify-center py-5">
+        <MudProgressCircular Size="Size.Medium" Color="Color.Primary" Indeterminate="true" />
+    </div>
+}
+else
+{
+<div class="container">
+    <section class="py-8">
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudPaper Elevation="0" >
+                    <MudText Typo="Typo.h2">@WorkshopPage.WorkshopTitle</MudText>
+                    <MudText>@WorkshopPage.Description</MudText>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudImage Src="@WorkshopPage.WorkshopBanner.Src" Alt="@WorkshopPage.WorkshopTitle" />
+            </MudItem>
+        </MudGrid>
+    </section>
+
+    <MudPaper Class="pa-8" Elevation="0" Outlined="true">
+        <MudText Color="Color.Primary">Registrations: @WorkshopPage.Registrations / @WorkshopPage.MaxRegistrations</MudText>
+    </MudPaper>
+</div>
+}

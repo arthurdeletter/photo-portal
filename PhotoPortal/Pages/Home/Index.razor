@@ -2,5 +2,16 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>@root.Name</h1>
+@if (HomePage is null)
+{
+    <div style="display: flex; justify-content: center; padding-block: 2rem;">
+        <MudProgressCircular Size="Size.Medium" Color="Color.Primary" Indeterminate="true" />
+    </div>
+}
+else
+{
+    <StandardBanner Headline="@HomePage.HeroHeading" SubHeadline="@HomePage.HeroSubheading" BannerImage="@HomePage.HeroBanner" />
+    <WorkshopShowcase SectionTitle="@HomePage.ShowcaseWorkshopsTitle" Workshops="@HomePage.ShowcaseWorkshops" />
+    <GearShowcase SectionTitle="@HomePage.ShowcaseGearTitle" Items="@HomePage.ShowcaseGear" />
+}
 

@@ -1,0 +1,25 @@
+﻿@page "/gear/{Route}"
+
+@if (ItemPage is null)
+{
+    <div class="d-flex justify-center py-5">
+        <MudProgressCircular Size="Size.Medium" Color="Color.Primary" Indeterminate="true" />
+    </div>
+} else
+{
+        <div class="container">
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudImage Src="@ItemPage.DisplayImage.Src" Alt="@ItemPage.DisplayName" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Class="pa-8" Elevation="0" Outlined="true">
+                        <MudChip Color="Color.Primary">@ItemPage.GearType</MudChip>
+                        <MudChip Color="Color.Primary">@ItemPage.Brand</MudChip>
+                        <MudText Typo="Typo.h2">@ItemPage.DisplayName</MudText>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </div>
+}
+

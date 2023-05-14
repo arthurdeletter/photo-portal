@@ -1,4 +1,5 @@
 ﻿using System;
+using BachVisuals.Models;
 using Microsoft.AspNetCore.Components;
 using PhotoPortal.Heartcore;
 using Umbraco.Headless.Client.Net.Delivery.Models;
@@ -8,12 +9,11 @@ namespace PhotoPortal.Pages.Home;
 public partial class Index
 {
 	[Inject] public UmbracoService UmbracoService { get; set; } = default!;
-	Content root = new Content();
-	ContentCollection<Content> content = new ContentCollection<Content>();
+    public HomePage? HomePage { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        root = await UmbracoService.GetRoot();
+        HomePage = (HomePage)await UmbracoService.GetContentByRoute("/home");
     }
 }
 

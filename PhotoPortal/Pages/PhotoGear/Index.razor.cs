@@ -1,19 +1,20 @@
 ﻿using System;
+using BachVisuals.Models;
 using Microsoft.AspNetCore.Components;
 using PhotoPortal.Heartcore;
 using Umbraco.Headless.Client.Net.Delivery.Models;
 
-namespace PhotoPortal.Pages.Gear;
+namespace PhotoPortal.Pages.PhotoGear;
 
 public partial class Index
 {
     [Inject] public UmbracoService UmbracoService { get; set; } = default!;
-    IEnumerable<Content>? content;
+    public Gear? GearPage { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        base.OnInitializedAsync();
-        content = await UmbracoService.GetCameras();
+        await base.OnInitializedAsync();
+        GearPage = (Gear) await UmbracoService.GetContentByRoute("/gear");
     }
 }
 

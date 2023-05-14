@@ -1,0 +1,15 @@
+﻿@page "/workshops"
+
+<PageTitle>Workshops</PageTitle>
+
+@if (WorkshopsPage is null)
+{
+    <div style="display: flex; justify-content: center; padding-block: 2rem;">
+        <MudProgressCircular Size="Size.Medium" Color="Color.Primary" Indeterminate="true" />
+    </div>
+}
+else
+{
+    <StandardBanner Headline="@WorkshopsPage.Heading" SubHeadline="@WorkshopsPage.SubHeading" BannerImage="@WorkshopsPage.Banner" />
+    <WorkshopShowcase SectionTitle="@WorkshopsPage.AvailableWorkshopsTitle" Workshops="@WorkshopsPage.AvailableWorkshops" />
+}

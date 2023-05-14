@@ -1,0 +1,26 @@
+﻿
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="display-6 mb-4">@SectionTitle</h2>
+
+        <div class="showcase-grid">
+            @if (Items?.Count > 0)
+            {
+                @foreach (var item in Items)
+                {
+                    <MudCard>
+                        <MudCardMedia Image="@item.DisplayImage.Src" Height="200" Style="background-size: contain;" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.h5">@item.DisplayName</MudText>
+                            <MudText Typo="Typo.body2">@item.Brand</MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@item.Url">More</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                }
+            }
+        </div>
+    </div>
+</section>
