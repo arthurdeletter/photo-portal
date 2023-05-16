@@ -14,6 +14,10 @@ public static class HeartcoreClientService
             (string.IsNullOrEmpty(apiKey)
             ? new ContentDeliveryService(projectAlias)
             : new ContentDeliveryService(projectAlias, apiKey));
+        services.AddUmbracoHeartcore(options =>
+        {
+            options.AddModels(typeof(Program).Assembly);
+        });
         return services;
     }
 
