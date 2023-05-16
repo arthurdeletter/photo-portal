@@ -23,8 +23,10 @@ else
         </MudGrid>
     </section>
 
-    <MudPaper Class="pa-8" Elevation="0" Outlined="true">
-        <MudText Color="Color.Primary">Registrations: @WorkshopPage.Registrations / @WorkshopPage.MaxRegistrations</MudText>
+    <MudPaper Class="pa-8" Elevation="0" Outlined="true" Style="display: flex; align-items: center; justify-content: space-between;">
+        <MudText Color="Color.Primary">Registrations: @_currentRegistrations / @WorkshopPage.MaxRegistrations</MudText>
+
+        <MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled" Color="Color.Primary" OnClick="@GetWorkshopForm">Register now</MudButton>
     </MudPaper>
 </div>
 }

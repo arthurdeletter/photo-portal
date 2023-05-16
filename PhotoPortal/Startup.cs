@@ -8,6 +8,7 @@ using PhotoPortal.Heartcore;
 using System.Configuration;
 using Microsoft.Extensions.Options;
 using MudBlazor.Services;
+using Umbraco.Headless.Client.Net.Configuration;
 
 namespace PhotoPortal
 {
@@ -27,18 +28,14 @@ namespace PhotoPortal
             services.AddServerSideBlazor();
             services.AddMudServices();
             services.AddSingleton<UmbracoService>();
+            services.AddSingleton<UmbracoManagementService>();
 
             var umbracoConfig = Configuration.GetSection("Heartcore");
             var projectAlias = umbracoConfig.GetValue<string>("ProjectAlias");
             var apiKey = umbracoConfig.GetValue<string>("ApiKey");
 
             services.AddUmbracoHeadlessContentDelivery(projectAlias, apiKey);
-            services.AddUmbracoHeartcore(options =>
-            {
-                options.AddModels(typeof(Program).Assembly);
-                options.ProjectAlias = projectAlias;
-                options.ApiKey = apiKey;
-            });
+            services.AddUmbracoHeadlessContentManagement(new ApiKeyBasedConfiguration(projectAlias, apiKey));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
