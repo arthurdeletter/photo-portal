@@ -1,5 +1,4 @@
 ﻿using System;
-using BachVisuals.Models;
 using Newtonsoft.Json;
 using Umbraco.Headless.Client.Net.Management;
 using Umbraco.Headless.Client.Net.Management.Models;

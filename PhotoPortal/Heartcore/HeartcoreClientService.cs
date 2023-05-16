@@ -5,6 +5,8 @@ using Umbraco.Headless.Client.Net.Management;
 
 namespace PhotoPortal.Heartcore;
 
+// Github reference: https://github.com/umbraco/Umbraco.Headless.Client.Net/blob/master/samples/Umbraco.Headless.Client.Samples.BlazorServer/Umbraco.Headless.Client.Samples.BlazorServer/Heartcore/HeartcoreClientService.cs
+
 public static class HeartcoreClientService
 {
     public static IServiceCollection AddUmbracoHeadlessContentDelivery(this IServiceCollection services,

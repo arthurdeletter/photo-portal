@@ -1,9 +1,9 @@
 ﻿using System;
-using BachVisuals.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting.Server;
 using MudBlazor;
 using PhotoPortal.Heartcore;
+using PhotoPortal.Models.Umbraco;
 using PhotoPortal.Shared;
 
 namespace PhotoPortal.Pages.PhotographyWorkshops

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace BachVisuals.Models
+namespace PhotoPortal.Models.Umbraco
 {
     public class WorkshopRegistration
     {

@@ -1,6 +1,6 @@
 ﻿using System;
-using BachVisuals.Models;
 using Microsoft.AspNetCore.Components;
+using PhotoPortal.Models.Umbraco;
 
 namespace PhotoPortal.Shared
 {

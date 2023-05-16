@@ -1,7 +1,7 @@
 ﻿using System;
-using BachVisuals.Models;
 using Microsoft.AspNetCore.Components;
 using PhotoPortal.Heartcore;
+using PhotoPortal.Models.Umbraco;
 
 namespace PhotoPortal.Pages.PhotoGear
 {

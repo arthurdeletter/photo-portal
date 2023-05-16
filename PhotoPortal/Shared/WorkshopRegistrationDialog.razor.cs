@@ -1,9 +1,9 @@
 ﻿using System;
-using BachVisuals.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
 using PhotoPortal.Heartcore;
+using PhotoPortal.Models.Umbraco;
 using Umbraco.Headless.Client.Net.Management;
 using Umbraco.Headless.Client.Net.Management.Models;
 
