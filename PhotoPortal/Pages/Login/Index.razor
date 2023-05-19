@@ -1,0 +1,27 @@
+﻿@page "/auth/login"
+
+
+<div class="container">
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <MudAlert Class="mt-3" Severity="Severity.Error">@error</MudAlert>
+    }
+    <EditForm Model="LoginModel" OnValidSubmit="Login">
+        <DataAnnotationsValidator />
+        <MudCard Elevation="0" Outlined="true" Class="p-3 mt-5 mx-auto" Style="width: min(35rem, 100%)">
+            <MudCardHeader>
+                <MudText Typo="Typo.h2">Login</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField @bind-Value="LoginModel.Username" Label="Username" Variant="Variant.Outlined"></MudTextField>
+                <ValidationMessage For="() => LoginModel.Username" />
+                <MudTextField InputType="InputType.Password" @bind-Value="LoginModel.Password" Label="Password" Variant="Variant.Outlined"></MudTextField>
+                <ValidationMessage For="() => LoginModel.Password" />
+            </MudCardContent>
+
+            <MudCardActions Class="d-flex justify-end">
+                <MudButton ButtonType="ButtonType.Submit" Color="Color.Primary" Variant="Variant.Filled">Login</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</div>

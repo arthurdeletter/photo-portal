@@ -1,0 +1,14 @@
+﻿@inherits LayoutComponentBase
+
+<MudAppBar Color="Color.Primary" Fixed="true">
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="async () => await OnSidebarToggled.InvokeAsync()" />
+    <MudSpacer />
+    <AuthorizeView>
+        <Authorized>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" DisableElevation="true" OnClick="Logout">Logout</MudButton>
+        </Authorized>
+        <NotAuthorized>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" DisableElevation="true" Href="/auth/login">Login</MudButton>
+        </NotAuthorized>
+    </AuthorizeView>
+</MudAppBar>

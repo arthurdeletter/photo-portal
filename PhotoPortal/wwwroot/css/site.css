@@ -71,7 +71,7 @@ img {
 .container {
     max-width: 75rem;
     margin-inline: auto;
-    padding: 2.5rem;
+    padding-inline: 1.5rem;
 }
 
 /* Banner */

@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using PhotoPortal.Models.Custom;
 using Umbraco.Headless.Client.Net.Management;
 using Umbraco.Headless.Client.Net.Management.Models;
 
@@ -7,9 +8,12 @@ namespace PhotoPortal.Heartcore
 {
 	public class UmbracoManagementService
 	{
-		private readonly ContentManagementService _managementService;
+        private readonly ContentManagementService _managementService;
 
-		public UmbracoManagementService(ContentManagementService managementService)
+		private string _bearerUrl = "https://cdn.umbraco.io/member/oauth/token";
+
+
+        public UmbracoManagementService(ContentManagementService managementService)
 		{
 			_managementService = managementService ?? throw new ArgumentNullException(nameof(managementService));
 		}
@@ -55,6 +59,20 @@ namespace PhotoPortal.Heartcore
 				return false;
 			}
 		}
-	}
+
+		public async Task<Member?> GetMemberByUsername(string username)
+		{
+            try
+            {
+                var member = await _managementService.Member.GetByUsername(username);
+                return member;
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+    }
 }
 

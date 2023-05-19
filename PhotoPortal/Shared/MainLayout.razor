@@ -6,16 +6,20 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main>
+<MudLayout>
+    <AppBar OnSidebarToggled="ToggleSidebar" />
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+    <NavMenu SideBarOpen="_sidebarOpen" />
 
+    <MudMainContent Class="mx-16">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _sidebarOpen = false;
+    private Anchor _anchor;
+
+    private void ToggleSidebar() => _sidebarOpen = !_sidebarOpen;
+}

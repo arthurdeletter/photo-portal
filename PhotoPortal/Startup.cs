@@ -9,6 +9,9 @@ using System.Configuration;
 using Microsoft.Extensions.Options;
 using MudBlazor.Services;
 using Umbraco.Headless.Client.Net.Configuration;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using PhotoPortal.Authentication;
 
 namespace PhotoPortal
 {
@@ -27,8 +30,17 @@ namespace PhotoPortal
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddMudServices();
+
+            services.AddHttpClient();
+
+            // Auth
+            services.AddScoped<ProtectedSessionStorage>();
+            services.AddScoped<AuthenticationStateProvider, UmbracoAuthenticationStateProvider>();
+
+            // Custom Umbraco Services
             services.AddSingleton<UmbracoService>();
             services.AddSingleton<UmbracoManagementService>();
+            services.AddScoped<UmbracoAuthService>();
 
             var umbracoConfig = Configuration.GetSection("Heartcore");
             var projectAlias = umbracoConfig.GetValue<string>("ProjectAlias");

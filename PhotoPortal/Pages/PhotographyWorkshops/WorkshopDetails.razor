@@ -8,25 +8,25 @@
 }
 else
 {
-<div class="container">
-    <section class="py-8">
-        <MudGrid>
-            <MudItem xs="12" sm="6">
-                <MudPaper Elevation="0" >
-                    <MudText Typo="Typo.h2">@WorkshopPage.WorkshopTitle</MudText>
-                    <MudText>@WorkshopPage.Description</MudText>
-                </MudPaper>
-            </MudItem>
-            <MudItem xs="12" sm="6">
-                <MudImage Src="@WorkshopPage.WorkshopBanner.Src" Alt="@WorkshopPage.WorkshopTitle" />
-            </MudItem>
-        </MudGrid>
-    </section>
+    <div class="container">
+        <section class="py-8">
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="0">
+                        <MudText Typo="Typo.h2">@WorkshopPage.WorkshopTitle</MudText>
+                        <MudText>@WorkshopPage.Description</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudImage Src="@WorkshopPage.WorkshopBanner.Src" Alt="@WorkshopPage.WorkshopTitle" />
+                </MudItem>
+            </MudGrid>
+        </section>
 
-    <MudPaper Class="pa-8" Elevation="0" Outlined="true" Style="display: flex; align-items: center; justify-content: space-between;">
-        <MudText Color="Color.Primary">Registrations: @_currentRegistrations / @WorkshopPage.MaxRegistrations</MudText>
+        <MudPaper Class="pa-8" Elevation="0" Outlined="true" Style="display: flex; align-items: center; justify-content: space-between;">
+            <MudText Color="Color.Primary">Registrations: @_currentRegistrations / @WorkshopPage.MaxRegistrations</MudText>
 
-        <MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled" Color="Color.Primary" OnClick="@GetWorkshopForm">Register now</MudButton>
-    </MudPaper>
-</div>
+            <MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled" Color="Color.Primary" OnClick="@GetWorkshopForm">Register now</MudButton>
+        </MudPaper>
+    </div>
 }
