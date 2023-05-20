@@ -1,0 +1,34 @@
+﻿
+
+<MudDialog>
+    <DialogContent>
+        <EditForm Model="@Model" OnValidSubmit="OnValidSubmit">
+            <MudCard Elevation="0">
+                <ValidationSummary />
+                @if (LoggedInMember is not null)
+                {
+                    <MudCardHeader>
+                        <MudSwitch @bind-Checked="UseLoginInfo" Color="Color.Primary" Label="@(UseLoginInfo ? "Using member info" : "Not using member info")" />
+                    </MudCardHeader>
+                }
+            <MudCardContent>
+                @if (UseLoginInfo)
+                {
+                    <MudAlert Severity="Severity.Info">Using member: <b>@(LoggedInMember.Name)</b></MudAlert>
+                }
+                else
+                {
+                    <MudTextField @bind-Value="Model.Name" Required="FormFields.Skip(0).First().Required" Label="@FormFields.Skip(0).First().Caption" Variant="Variant.Outlined" For="@(() => Model.Name)"></MudTextField>
+                    <MudTextField @bind-Value="Model.Email" Required="FormFields.Skip(1).First().Required" Label="@FormFields.Skip(1).First().Caption" Variant="Variant.Outlined" For="@(() => Model.Email)"></MudTextField>
+                    <MudCheckBox @bind-Checked="Model.DataConsent" Required="FormFields.Skip(3).First().Required" Label="@FormFields.Skip(3).First().Caption" Color="Color.Primary" For="@(() => Model.DataConsent)"></MudCheckBox>
+                }
+            </MudCardContent>
+                <MudCardActions Class="d-flex justify-end gap-2">
+                    <MudButton OnClick="Cancel">Cancel</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Register now</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </EditForm>
+    </DialogContent>
+</MudDialog>
+

@@ -18,6 +18,12 @@ namespace PhotoPortal.Pages.Login
 
 		private async Task Login()
 		{
+			if (string.IsNullOrEmpty(LoginModel.Username) || string.IsNullOrEmpty(LoginModel.Password))
+			{
+				error = "Username or password cannot be empty.";
+				return;
+			}
+
 			var response = await AuthenticationService.Login(LoginModel);
 
 			if (!response.succes)

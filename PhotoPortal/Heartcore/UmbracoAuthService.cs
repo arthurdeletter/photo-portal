@@ -64,7 +64,7 @@ namespace PhotoPortal.Heartcore
 
                 await _customAuthProvider.UpdateAuthenticationState(new UserSession
                 {
-                    UserName = member.Username,
+                    Username = member.Username,
                     Role = member.MemberTypeAlias
                 });
 

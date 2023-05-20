@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Hosting.Server;
+﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using PhotoPortal.Heartcore;
+using PhotoPortal.Pages.PhotographyWorkshops.Components;
 using PhotoPortal.Models.Umbraco;
-using PhotoPortal.Shared;
 
 namespace PhotoPortal.Pages.PhotographyWorkshops
 {

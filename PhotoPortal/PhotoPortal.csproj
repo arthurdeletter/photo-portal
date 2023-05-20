@@ -17,6 +17,7 @@
     <None Remove="Pages\Login\" />
     <None Remove="Models\Custom\" />
     <None Remove="Authentication\" />
+    <None Remove="Pages\PhotographyWorkshops\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Heartcore\" />
@@ -27,6 +28,7 @@
     <Folder Include="Pages\Login\" />
     <Folder Include="Models\Custom\" />
     <Folder Include="Authentication\" />
+    <Folder Include="Pages\PhotographyWorkshops\Components\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Umbraco.Headless.Client.Net" Version="1.4.1" />

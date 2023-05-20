@@ -27,7 +27,7 @@ namespace PhotoPortal.Authentication
                 }
                 var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
-                new Claim(ClaimTypes.Name, userSession.UserName),
+                new Claim(ClaimTypes.Name, userSession.Username),
                 new Claim(ClaimTypes.Role, userSession.Role)
             }, "UmbracoAuth"));
                 return await Task.FromResult(new AuthenticationState(claimsPrincipal));
@@ -47,7 +47,7 @@ namespace PhotoPortal.Authentication
                 await _sessionStorage.SetAsync("UserSession", userSession);
                 claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
-                new Claim(ClaimTypes.Name, userSession.UserName),
+                new Claim(ClaimTypes.Name, userSession.Username),
                 new Claim(ClaimTypes.Role, userSession.Role)
             }));
             } else
