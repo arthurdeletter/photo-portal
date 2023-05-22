@@ -3,6 +3,7 @@ using System.Net;
 using Umbraco.Headless.Client.Net.Configuration;
 using Umbraco.Headless.Client.Net.Delivery;
 using Umbraco.Headless.Client.Net.Management;
+using Umbraco.Headless.Client.Net.Security;
 
 namespace PhotoPortal.Heartcore
 {
@@ -56,6 +57,19 @@ namespace PhotoPortal.Heartcore
             IPasswordBasedConfiguration configuration)
         {
             services.AddSingleton(new ContentManagementService(configuration));
+            return services;
+        }
+
+        public static IServiceCollection AddUmbracoHeadlessAuthentication(this IServiceCollection services, string projectAlias, string apiKey = null)
+        {
+
+            HttpClient client = new()
+            {
+                BaseAddress = new Uri("https://cdn.umbraco.io/"),
+            };
+            client.DefaultRequestHeaders.Add("api-key", apiKey);
+
+            services.AddSingleton(new AuthenticationService(projectAlias, client));
             return services;
         }
     }

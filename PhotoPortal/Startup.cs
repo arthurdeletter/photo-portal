@@ -40,6 +40,7 @@ namespace PhotoPortal
 
             services.AddUmbracoHeadlessContentDelivery(projectAlias, apiKey);
             services.AddUmbracoHeadlessContentManagement(new ApiKeyBasedConfiguration(projectAlias, apiKey));
+            services.AddUmbracoHeadlessAuthentication(projectAlias, apiKey);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

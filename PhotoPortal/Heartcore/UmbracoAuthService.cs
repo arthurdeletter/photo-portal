@@ -3,11 +3,13 @@ using Microsoft.JSInterop;
 using PhotoPortal.Authentication;
 using PhotoPortal.Models.Custom;
 using Umbraco.Headless.Client.Net;
+using Umbraco.Headless.Client.Net.Security;
 
 namespace PhotoPortal.Heartcore
 {
 	public class UmbracoAuthService
 	{
+        private readonly AuthenticationService _authenticationService;
         private readonly UmbracoManagementService _managementService;
 		private readonly HttpClient _client;
         private readonly IJSRuntime _runtime;
@@ -16,14 +18,11 @@ namespace PhotoPortal.Heartcore
         const string _baseUrl = Constants.Urls.BaseCdnUrl;
 
 
-        public UmbracoAuthService(UmbracoManagementService managementService, HttpClient client, AuthenticationStateProvider authState, IConfiguration config, IJSRuntime runtime)
+        public UmbracoAuthService(AuthenticationService authenticationService, UmbracoManagementService managementService, AuthenticationStateProvider authState, IJSRuntime runtime)
         {
             _managementService = managementService;
-            _client = client;
             _runtime = runtime;
             _customAuthProvider = (UmbracoAuthenticationStateProvider)authState;
-
-            ConfigureClient(config);
         }
 
         public async Task<AuthResponse> Login(MemberLogin login)
@@ -41,19 +40,15 @@ namespace PhotoPortal.Heartcore
                     };
                 };
 
-                var body = GetFormData(login.Username, login.Password);
+				var response = await _authenticationService.AuthenticateMember(login.Username, login.Password);
 
-				var response = await _client.PostAsync($"{_baseUrl}/member/oauth/token", body);
-
-                if (!response.IsSuccessStatusCode) return new AuthResponse
+                if (!string.IsNullOrEmpty(response.Error)) return new AuthResponse
                 {
-                    ErrorMessage = "Invalid username or password.",
+                    ErrorMessage = response.Error,
                     succes = false
                 };
 
-				var result = await response.Content.ReadFromJsonAsync<AuthResult>();
-
-                await _runtime.InvokeVoidAsync("localStorage.setItem", result.TokenType, result.AccessToken);
+                await _runtime.InvokeVoidAsync("localStorage.setItem", response.TokenType, response.AccessToken);
 
                 await _customAuthProvider.UpdateAuthenticationState(new UserSession
                 {
@@ -76,25 +71,6 @@ namespace PhotoPortal.Heartcore
                 };
 			}
 		}
-
-        private static FormUrlEncodedContent GetFormData(string username, string password)
-        {
-            return new FormUrlEncodedContent(new[]
-                {
-                    new KeyValuePair<string, string>("grant_type", "password"),
-                    new KeyValuePair<string, string>("username", username),
-                    new KeyValuePair<string, string>("password", password),
-                });
-        }
-
-        private void ConfigureClient(IConfiguration config)
-        {
-            var projectAlias = config.GetValue<string>("Heartcore:ProjectAlias");
-            var apiKey = config.GetValue<string>("Heartcore:APIKey");
-
-            _client.DefaultRequestHeaders.Add("Umb-Project-Alias", projectAlias);
-            _client.DefaultRequestHeaders.Add("api-key", apiKey);
-        }
     }
 }
 
