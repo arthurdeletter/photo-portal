@@ -13,9 +13,6 @@ namespace PhotoPortal.Heartcore
         private readonly IJSRuntime _runtime;
         private readonly UmbracoAuthenticationStateProvider _customAuthProvider;
 
-		private string? _projectAlias;
-		private string? _apiKey;
-
         const string _baseUrl = Constants.Urls.BaseCdnUrl;
 
 
@@ -42,12 +39,6 @@ namespace PhotoPortal.Heartcore
                         ErrorMessage = $"No member with username {login.Username} was found.",
                         succes = false
                     };
-                }
-
-                if (!member.Password.Equals(login.Password)) return new AuthResponse
-                {
-                    ErrorMessage = "Invalid username or password.",
-                    succes = false
                 };
 
                 var body = GetFormData(login.Username, login.Password);
@@ -98,11 +89,11 @@ namespace PhotoPortal.Heartcore
 
         private void ConfigureClient(IConfiguration config)
         {
-            _projectAlias = config.GetValue<string>("Heartcore:ProjectAlias");
-            _apiKey = config.GetValue<string>("Heartcore:APIKey");
+            var projectAlias = config.GetValue<string>("Heartcore:ProjectAlias");
+            var apiKey = config.GetValue<string>("Heartcore:APIKey");
 
-            _client.DefaultRequestHeaders.Add("Umb-Project-Alias", _projectAlias);
-            _client.DefaultRequestHeaders.Add("api-key", _apiKey);
+            _client.DefaultRequestHeaders.Add("Umb-Project-Alias", projectAlias);
+            _client.DefaultRequestHeaders.Add("api-key", apiKey);
         }
     }
 }
