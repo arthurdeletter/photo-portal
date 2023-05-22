@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using PhotoPortal.Heartcore;
-using System.Configuration;
-using Microsoft.Extensions.Options;
+﻿using PhotoPortal.Heartcore;
 using MudBlazor.Services;
 using Umbraco.Headless.Client.Net.Configuration;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;

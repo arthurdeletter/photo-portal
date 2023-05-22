@@ -15,26 +15,39 @@ namespace PhotoPortal.Pages.Login
 
 		public MemberLogin LoginModel { get; set; } = new();
 		private string error = "";
+		private bool loading = false;
 
 		private async Task Login()
 		{
-			if (string.IsNullOrEmpty(LoginModel.Username) || string.IsNullOrEmpty(LoginModel.Password))
+			loading = true;
+			try
 			{
-				error = "Username or password cannot be empty.";
-				return;
-			}
+                if (string.IsNullOrEmpty(LoginModel.Username) || string.IsNullOrEmpty(LoginModel.Password))
+                {
+                    error = "Username or password cannot be empty.";
+                    return;
+                }
 
-			var response = await AuthenticationService.Login(LoginModel);
+                var response = await AuthenticationService.Login(LoginModel);
 
-			if (!response.succes)
+                if (!response.succes)
+                {
+                    error = response?.ErrorMessage;
+                    return;
+                }
+
+                error = string.Empty;
+
+                NavManager.NavigateTo("/", true);
+            }
+			catch (Exception ex)
 			{
-				error = response?.ErrorMessage;
-				return;
+				error = ex.Message;
+				Console.WriteLine(ex.Message);
+			} finally
+			{
+				loading = false;
 			}
-
-			error = string.Empty;
-
-			NavManager.NavigateTo("/", true);
 		}
 	}
 }

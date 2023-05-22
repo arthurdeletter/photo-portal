@@ -10,7 +10,7 @@ namespace PhotoPortal.Heartcore
 
         public UmbracoService(ContentDeliveryService contentDelivery)
         {
-            this._contentDelivery = contentDelivery ?? throw new ArgumentNullException(nameof(contentDelivery));
+            _contentDelivery = contentDelivery ?? throw new ArgumentNullException(nameof(contentDelivery));
         }
 
         public async Task<Content> GetRoot()

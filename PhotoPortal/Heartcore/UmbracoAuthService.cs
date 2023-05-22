@@ -1,12 +1,8 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 using PhotoPortal.Authentication;
 using PhotoPortal.Models.Custom;
 using Umbraco.Headless.Client.Net;
-using Umbraco.Headless.Client.Net.Security;
 
 namespace PhotoPortal.Heartcore
 {
@@ -15,8 +11,8 @@ namespace PhotoPortal.Heartcore
         private readonly UmbracoManagementService _managementService;
 		private readonly HttpClient _client;
         private readonly IJSRuntime _runtime;
+        private readonly UmbracoAuthenticationStateProvider _customAuthProvider;
 
-        private UmbracoAuthenticationStateProvider _customAuthProvider;
 		private string? _projectAlias;
 		private string? _apiKey;
 
@@ -48,13 +44,19 @@ namespace PhotoPortal.Heartcore
                     };
                 }
 
+                if (!member.Password.Equals(login.Password)) return new AuthResponse
+                {
+                    ErrorMessage = "Invalid username or password.",
+                    succes = false
+                };
+
                 var body = GetFormData(login.Username, login.Password);
 
 				var response = await _client.PostAsync($"{_baseUrl}/member/oauth/token", body);
 
                 if (!response.IsSuccessStatusCode) return new AuthResponse
                 {
-                    ErrorMessage = "Username and password combination incorrect.",
+                    ErrorMessage = "Invalid username or password.",
                     succes = false
                 };
 

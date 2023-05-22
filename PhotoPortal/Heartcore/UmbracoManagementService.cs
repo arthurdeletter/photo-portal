@@ -1,16 +1,11 @@
-﻿using System;
-using Newtonsoft.Json;
-using PhotoPortal.Models.Custom;
-using Umbraco.Headless.Client.Net.Management;
+﻿using Umbraco.Headless.Client.Net.Management;
 using Umbraco.Headless.Client.Net.Management.Models;
 
 namespace PhotoPortal.Heartcore
 {
-	public class UmbracoManagementService
+    public class UmbracoManagementService
 	{
         private readonly ContentManagementService _managementService;
-
-		private string _bearerUrl = "https://cdn.umbraco.io/member/oauth/token";
 
 
         public UmbracoManagementService(ContentManagementService managementService)
